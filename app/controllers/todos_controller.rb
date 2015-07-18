@@ -8,6 +8,7 @@ end
 def create
 	@todo = Todo.new(white_params)
 	@todo.save
+  flash[:success] = "Created!"
 	redirect_to todos_path
 end
 
@@ -28,8 +29,13 @@ end
 
 def destroy
   @todo = Todo.find(params[:id])
-  flash[:error] = "Not deleted!" unless @todo.destroy
-  redirect_to todos_path
+  if @todo.destroy
+    flash[:success] = "Task Deleted!"
+    redirect_to todos_path
+  else
+    flash[:error] = "Not deleted!"
+    render :edit
+  end
 end
 
 private
