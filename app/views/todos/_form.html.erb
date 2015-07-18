@@ -1,11 +1,26 @@
-<%= form_for @todo do |val| %>
-<div class = "form-group">
-	<%= val.label :text %>
-	<%= val.text_field :text %>
+<%= form_for @todo, :html => {:class => "form-horizontal"} do |val| %>
+<div class="row">
+  <div class="col-sm-11">
+    <div class = "form-group form-group-lg">
+
+    	 <%= val.label :text, class: "col-sm-5 control-label"%>
+
+    	 <%= val.text_field :text, class: "col-sm-6 control-label" %>
+
+    </div>
+    <div class = "form-group form-group-lg">
+
+    	 <%= val.label :completion_date, class: "col-sm-5 control-label" %>
+    	 <%= val.datetime_field :completion_date, class: "col-sm-6 control-label" %>
+      <div class="col-sm-1">
+        <%= val.submit "Add", class: "btn btn-success btn-lg" %>
+      </div>
+    </div>
+  </div>
+
+<!--   <div class="col-sm-4">
+    <div class="form-group">
+    </div>
+  </div> -->
 </div>
-<div class = "form-group">
-	<%= val.label :completion_date %>
-	<%= val.datetime_field :completion_date %>
-</div>
-	<%= val.submit "Add", class: "btn btn-success btn-lg" %>
 <% end %>
