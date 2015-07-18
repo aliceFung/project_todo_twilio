@@ -1,0 +1,22 @@
+-homepage: navbar, text, buttons, join_in
+  => using bootstrap
+-index to-do controller pg (desc order)
+  controller
+  -using cookies/session initially to test
+  -form submission to create new to-do
+  -TO-DO: model: (id) text: string, complete_date :datetime?
+  -partial of to_do
+
+  -index pg has all to-do
+  -delete to do
+
+*flash msgs* for every action (use partial)
+
+persist state b/w requests: database (init. w/ cookies/sessions)
+
+1) model: todo
+2) controller: todos
+3) views: index (all, new form-> create, link to individual)
+
+
+routes: index(+v), create, edit(indiv)(+v), update, destroy
