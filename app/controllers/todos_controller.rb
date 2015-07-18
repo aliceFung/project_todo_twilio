@@ -11,6 +11,27 @@ def create
 	redirect_to todos_path
 end
 
+def edit
+  @todo = Todo.find(params[:id])
+end
+
+def update
+  @todo = Todo.find(params[:id])
+  if @todo.update(white_params)
+    flash[:success] = "Updated!"
+    redirect_to todos_path
+  else
+    flash.now[:error] = "Not updated!"
+    render :edit
+  end
+end
+
+def destroy
+  @todo = Todo.find(params[:id])
+  flash[:error] = "Not deleted!" unless @todo.destroy
+  redirect_to todos_path
+end
+
 private
 
 def white_params

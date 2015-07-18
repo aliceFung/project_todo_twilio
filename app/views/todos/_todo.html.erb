@@ -1,4 +1,8 @@
-<%= todo.id %>
-<%= todo.text %>
-<%= todo.completion_date %>
+<p>
+<%= todo.id %><br>
+<%= todo.text %><br>
+<%= todo.completion_date %><br>
 <%= todo.created_at %>
+<%= link_to "Edit", edit_todo_path(todo.id) %>
+<%= link_to "Delete!", todo_path(todo.id), method: :delete %>
+<p>
