@@ -1,8 +1,8 @@
 <tr>
 <td><%= todo.id %></td>
 <td><%= todo.text %></td>
-<td><%= todo.completion_date %></td>
-<td><%= todo.created_at %></td>
+<td><%= todo.completion_date.strftime("%D") if todo.completion_date%></td>
+<td><%= todo.created_at.strftime("%D") %></td>
 <td><%= link_to "Text yourself", send_text_path(todo.id), method: :post %></td>
 <td><%= link_to "Edit", edit_todo_path(todo.id) %></td>
 <td><%= link_to "Delete!", todo_path(todo.id), method: :delete %></td>

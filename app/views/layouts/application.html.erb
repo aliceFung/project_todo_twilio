@@ -8,16 +8,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h1>TO DO LIST</h1>
+      </div>
+    </div>
+  </nav>
 	<div class = "container" >
 		<div class = "row">
-			<div class = "col-xs-8">
-				<% flash.each do |type, msg| %>
-				<%=  "#{type.upcase}: #{msg.upcase}" %>
-				<% end %>
-	  		</div>
+			<div class = "col-xs-10 col-xs-offset-1">
+          <%= render partial: "shared/flash_messages" %>
 	  	</div>
+	  </div>
 		<div class = "row">
-			<div class = "col-xs-10">
+			<div class = "col-xs-10 col-xs-offset-1">
 				<%= yield %>
 			</div>
 		</div>
