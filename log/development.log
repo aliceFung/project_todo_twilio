@@ -4,7 +4,7 @@
   [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
 Migrating to CreateTodos (20150718175053)
   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
-  [1m[35m (0.7ms)[0m  CREATE TABLE "todos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "date" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[35m (0.7ms)[0m  CREATE TABLE "todos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "date" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150718175053"]]
   [1m[35m (0.9ms)[0m  commit transaction
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
@@ -14,7 +14,7 @@ Migrating to ChangeDate (20150718182624)
   [1m[36m (1.0ms)[0m  [1mCREATE TEMPORARY TABLE "atodos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "completion_date" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
   [1m[35m (0.1ms)[0m  SELECT * FROM "todos"
   [1m[36m (2.8ms)[0m  [1mDROP TABLE "todos"[0m
-  [1m[35m (0.2ms)[0m  CREATE TABLE "todos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "completion_date" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[35m (0.2ms)[0m  CREATE TABLE "todos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "completion_date" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)
   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "atodos"[0m
   [1m[35m (0.5ms)[0m  DROP TABLE "atodos"
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150718182624"]]
@@ -1079,7 +1079,7 @@ SyntaxError - syntax error, unexpected ')', expecting :: or '[' or '.'
 ...er.append=( val.submit, 'Add' );@output_buffer.safe_append='
 ...                               ^
 /Users/apdev/Documents/Coding/viking_education/Unit7:Rails_Basics/todo_twilio/app/views/todos/_form.html.erb:14: syntax error, unexpected keyword_end, expecting ')'
-'.freeze; end 
+'.freeze; end
              ^
 /Users/apdev/Documents/Coding/viking_education/Unit7:Rails_Basics/todo_twilio/app/views/todos/_form.html.erb:16: syntax error, unexpected keyword_ensure, expecting ')'
 /Users/apdev/Documents/Coding/viking_education/Unit7:Rails_Basics/todo_twilio/app/views/todos/_form.html.erb:18: syntax error, unexpected keyword_end, expecting ')':
@@ -6349,28 +6349,32 @@ ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/C
 Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 20:53:41 -0400
 
 
-Started POST "/todos" for ::1 at 2015-07-18 21:26:27 -0400
+
+Started GET "/" for ::1 at 2015-07-18 17:55:52 -0700
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Processing by TodosController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v++8GfcNt50LZw8jViQL9LoeZF3/hju8LjHpu0wNu9xiohBPg2joiDtF06duCir8pxRAc9kiT5o7LdrQnzNsVg==", "todo"=>{"text"=>"talking", "completion_date"=>""}, "commit"=>"Submit"}
-  [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "todos" ("text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["text", "talking"], ["created_at", "2015-07-19 01:26:28.259503"], ["updated_at", "2015-07-19 01:26:28.259503"]]
-  [1m[35m (4.9ms)[0m  commit transaction
-Redirected to http://localhost:3000/todos
-Completed 302 Found in 46ms (ActiveRecord: 6.9ms)
-
-
-Started GET "/todos" for ::1 at 2015-07-18 21:26:28 -0400
 Processing by TodosController#index as HTML
-  Rendered todos/_form.html.erb (23.8ms)
+  Rendered todos/_form.html.erb (36.1ms)
+  [1m[35mTodo Load (0.6ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (3.4ms)
+  Rendered todos/index.html.erb within layouts/application (54.3ms)
+  Rendered shared/_flash_messages.html.erb (0.6ms)
+Completed 200 OK in 391ms (Views: 383.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2015-07-18 17:55:52 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.1ms)
   [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
-  Rendered todos/_todo.html.erb (5.8ms)
-  Rendered todos/index.html.erb within layouts/application (41.1ms)
-  Rendered shared/_flash_messages.html.erb (0.7ms)
-Completed 200 OK in 287ms (Views: 286.4ms | ActiveRecord: 0.2ms)
+  Rendered todos/_todo.html.erb (2.3ms)
+  Rendered todos/index.html.erb within layouts/application (8.8ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 50ms (Views: 48.8ms | ActiveRecord: 0.2ms)
 
 
-Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 21:26:28 -0400
+Started GET "/assets/todos.self-bd0a54c059fc95f6c13d9a13bbc73cc4e1f3b1a66a96bd8e4de50e73e9c6c515.css?body=1" for ::1 at 2015-07-18 17:55:52 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:55:52 -0700
 
 ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
   actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
@@ -6394,6 +6398,137 @@ ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/C
   rack (1.6.4) lib/rack/lock.rb:17:in `call'
   rack (1.6.4) lib/rack/content_length.rb:15:in `call'
   rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (15.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (162.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (76.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (163.2ms)
+
+
+Started DELETE "/todos/3" for ::1 at 2015-07-18 17:56:19 -0700
+Processing by TodosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Z6qDm4o4efvXrXU8vWTEOkVIH/loPKgwxq9SvjDLxP2ZoezqLsskEsyzok8NUiklpGr+o6gZQtnq0VG2xd5jnA==", "id"=>"3"}
+  [1m[35mTodo Load (0.2ms)[0m  SELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "todos" WHERE "todos"."id" = ?  [["id", 3]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 17ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:56:19 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (3.3ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (2.7ms)
+  Rendered todos/index.html.erb within layouts/application (10.9ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 60ms (Views: 59.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:56:19 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (99.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (55.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (126.6ms)
+
+
+Started DELETE "/todos/5" for ::1 at 2015-07-18 17:56:20 -0700
+Processing by TodosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"S2y0k2e7FnGkIg+qa/ab2bUwxYrl7kymDo5RM7KkqlS1Z9viw0hLmL882NnbwHbGVBIk0CXLpk8i8FI7R7ENNQ==", "id"=>"5"}
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 5]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 3ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:56:20 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.6ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (1.6ms)
+  Rendered todos/index.html.erb within layouts/application (10.4ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 52ms (Views: 51.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:56:20 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+<<<<<<< HEAD
   /Users/alicefung/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
   /Users/alicefung/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
   /Users/alicefung/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
@@ -6425,6 +6560,50 @@ Completed 200 OK in 70ms (Views: 49.5ms | ActiveRecord: 0.3ms)
 
 
 Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 21:26:41 -0400
+=======
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (96.1ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (66.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (137.3ms)
+
+
+Started DELETE "/todos/6" for ::1 at 2015-07-18 17:56:21 -0700
+Processing by TodosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"p03/U+wQT/ckKSbPRN4dMB7D7RWAxu34yhjITZqm4uhZRpAiSOMSHj838bz06PAv/+EMT0DjBxHmZstFb7NFiQ==", "id"=>"6"}
+  [1m[35mTodo Load (0.1ms)[0m  SELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "todos" WHERE "todos"."id" = ?  [["id", 6]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 5ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:56:21 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.3ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (1.3ms)
+  Rendered todos/index.html.erb within layouts/application (7.7ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 44ms (Views: 43.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:56:22 -0700
+>>>>>>> 7ab97e789afd2e0daf1c22cf05a4af42c46908f7
 
 ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
   actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
@@ -6448,6 +6627,7 @@ ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/C
   rack (1.6.4) lib/rack/lock.rb:17:in `call'
   rack (1.6.4) lib/rack/content_length.rb:15:in `call'
   rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+<<<<<<< HEAD
   /Users/alicefung/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
   /Users/alicefung/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
   /Users/alicefung/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
@@ -6490,6 +6670,49 @@ Completed 200 OK in 83ms (Views: 82.2ms | ActiveRecord: 0.3ms)
 
 
 Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 21:26:48 -0400
+=======
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (87.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (62.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (131.4ms)
+
+
+Started DELETE "/todos/7" for ::1 at 2015-07-18 17:56:22 -0700
+Processing by TodosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"4keKy9HA69CxNxeDuV2EaK5x6719J+teOgWl/pasgYAcTOW6dTO2OaopwPAJa2l3T1MK570CAbcWe6b2Y7km4Q==", "id"=>"7"}
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 7]]
+  [1m[35m (2.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 5ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:56:22 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (1.8ms)
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.9ms)
+  Rendered todos/index.html.erb within layouts/application (6.9ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 44ms (Views: 43.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:56:22 -0700
 
 ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
   actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
@@ -6513,6 +6736,280 @@ ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/C
   rack (1.6.4) lib/rack/lock.rb:17:in `call'
   rack (1.6.4) lib/rack/content_length.rb:15:in `call'
   rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (92.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (61.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (128.1ms)
+
+
+Started DELETE "/todos/8" for ::1 at 2015-07-18 17:56:23 -0700
+Processing by TodosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Sh2fPyeqby/swjuTzp+BKcVMTuVvqnBatt1NyiZrNCm0FvBOg1kyxvfc7OB+qWw2JG6vv6+PmrOao07C036TSA==", "id"=>"8"}
+  [1m[35mTodo Load (0.2ms)[0m  SELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "todos" WHERE "todos"."id" = ?  [["id", 8]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 6ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:56:23 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.0ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.6ms)
+  Rendered todos/index.html.erb within layouts/application (6.6ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 45ms (Views: 44.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:56:23 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (84.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (60.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (133.2ms)
+
+
+Started DELETE "/todos/9" for ::1 at 2015-07-18 17:56:23 -0700
+Processing by TodosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"iCZ95ip1dGS+qIFwcAL17jaTOwRfmuoYkQgPbkdxz0N2LRKXjoYpjaW2VgPANBjx17HaXp+/APG9dgxmsmRoIg==", "id"=>"9"}
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 9]]
+  [1m[35m (2.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 5ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:56:23 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (1.8ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered collection (0.0ms)
+  Rendered todos/index.html.erb within layouts/application (4.3ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 42.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:56:24 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (92.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (54.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (127.2ms)
+
+
+Started POST "/todos" for ::1 at 2015-07-18 17:56:47 -0700
+Processing by TodosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XvP+0/RGoDFCwCp7CcDZPW7V1u/FX0hCtopsvnqdVf2g+JGiULX92Fne/Qi59jQij/c3tQV6oqua9G+2j4jynA==", "todo"=>{"text"=>"Groceries at 8pm", "completion_date"=>"2015/07/18"}, "commit"=>"Submit"}
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "todos" ("text", "completion_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["text", "Groceries at 8pm"], ["completion_date", "2015-07-18 00:00:00.000000"], ["created_at", "2015-07-19 00:56:47.213167"], ["updated_at", "2015-07-19 00:56:47.213167"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 8ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:56:47 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (1.7ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.8ms)
+  Rendered todos/index.html.erb within layouts/application (6.8ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 42.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:56:47 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (91.1ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (57.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (129.3ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:58:16 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.4ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.7ms)
+  Rendered todos/index.html.erb within layouts/application (7.7ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 83ms (Views: 82.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/todos.self-72f0ca7faf288a9d06f9877e9bf3ecf8e21368ee869f0e486a6ac49094b97cec.css?body=1" for ::1 at 2015-07-18 17:58:16 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 17:58:16 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 17:58:16 -0700
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 17:58:16 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 17:58:16 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:58:16 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:58:16 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 17:58:16 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:58:16 -0700
+>>>>>>> 7ab97e789afd2e0daf1c22cf05a4af42c46908f7
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+<<<<<<< HEAD
   /Users/alicefung/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
   /Users/alicefung/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
   /Users/alicefung/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
@@ -6531,3 +7028,2045 @@ ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/C
   Rendered /Users/alicefung/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
   Rendered /Users/alicefung/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
   Rendered /Users/alicefung/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (140.7ms)
+=======
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.1ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (95.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (62.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (137.0ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:58:47 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.4ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.6ms)
+  Rendered todos/index.html.erb within layouts/application (7.3ms)
+  Rendered shared/_flash_messages.html.erb (0.2ms)
+Completed 200 OK in 91ms (Views: 90.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/todos.self-147f362fb5cd78e7f6d2365848382d36e1b5b0661b2e76306190157974fe63e5.css?body=1" for ::1 at 2015-07-18 17:58:47 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 17:58:47 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 17:58:47 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:58:47 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 17:58:47 -0700
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 17:58:47 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:58:47 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 17:58:47 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:58:47 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (95.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (65.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (138.4ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:58:56 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.1ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.6ms)
+  Rendered todos/index.html.erb within layouts/application (6.9ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 91ms (Views: 90.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 17:58:56 -0700
+
+
+Started GET "/assets/todos.self-c297920470d70d803389be940f8e0c237c20ce586ccf5cd332b0239759cbb713.css?body=1" for ::1 at 2015-07-18 17:58:56 -0700
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 17:58:56 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 17:58:56 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 17:58:56 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:58:56 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:58:56 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 17:58:56 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:58:56 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (89.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (60.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (130.5ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:59:11 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (1.7ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.6ms)
+  Rendered todos/index.html.erb within layouts/application (6.5ms)
+  Rendered shared/_flash_messages.html.erb (0.2ms)
+Completed 200 OK in 93ms (Views: 92.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/todos.self-929cf065eb7b5a0466e031936b61e7258c9780c380dca9b69e69d92d4b016564.css?body=1" for ::1 at 2015-07-18 17:59:11 -0700
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 17:59:11 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:59:11 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 17:59:11 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 17:59:11 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 17:59:11 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:59:11 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 17:59:11 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:59:11 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (93.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (55.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (128.1ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:59:21 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.3ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.7ms)
+  Rendered todos/index.html.erb within layouts/application (7.2ms)
+  Rendered shared/_flash_messages.html.erb (0.2ms)
+Completed 200 OK in 95ms (Views: 94.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 17:59:22 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 17:59:22 -0700
+
+
+Started GET "/assets/todos.self-72f0ca7faf288a9d06f9877e9bf3ecf8e21368ee869f0e486a6ac49094b97cec.css?body=1" for ::1 at 2015-07-18 17:59:22 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 17:59:22 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:59:22 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 17:59:22 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:59:22 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 17:59:22 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:59:22 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (90.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (60.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (133.1ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 17:59:33 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.7ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.6ms)
+  Rendered todos/index.html.erb within layouts/application (7.5ms)
+  Rendered shared/_flash_messages.html.erb (0.2ms)
+Completed 200 OK in 89ms (Views: 88.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 17:59:34 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 17:59:34 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 17:59:34 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 17:59:34 -0700
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 17:59:34 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:59:34 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 17:59:34 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 17:59:34 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 17:59:34 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (98.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (59.1ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (131.3ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:00:37 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.8ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.6ms)
+  Rendered todos/index.html.erb within layouts/application (8.1ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 108ms (Views: 107.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/todos.self-83a1b34814f9d2f7cf685ae56fb52a1837454cf8116928afb1410383ae33966d.css?body=1" for ::1 at 2015-07-18 18:00:37 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:00:37 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:00:37 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:00:37 -0700
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:00:37 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:00:37 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:00:37 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:00:37 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:00:37 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (98.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (60.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (137.5ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:00:50 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.0ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.7ms)
+  Rendered todos/index.html.erb within layouts/application (7.3ms)
+  Rendered shared/_flash_messages.html.erb (0.2ms)
+Completed 200 OK in 91ms (Views: 89.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:00:50 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:00:50 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:00:50 -0700
+
+
+Started GET "/assets/todos.self-c071cd3457f1a23bac57ff8750bbde080b9399eb7e117b3d971cf144c4a82ac9.css?body=1" for ::1 at 2015-07-18 18:00:50 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:00:50 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:00:50 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:00:50 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:00:50 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:00:50 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (88.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (57.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (125.4ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:00:57 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.5ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.7ms)
+  Rendered todos/index.html.erb within layouts/application (8.2ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 51ms (Views: 50.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:00:57 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:00:57 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:00:57 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:00:57 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:00:57 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:00:57 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:00:57 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:00:57 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:00:57 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (91.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (63.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (136.6ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:04:46 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (3.2ms)
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.8ms)
+  Rendered todos/index.html.erb within layouts/application (9.3ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 66ms (Views: 65.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:04:46 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:04:46 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:04:46 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:04:46 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:04:46 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:04:46 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:04:46 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:04:46 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:04:46 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (107.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (69.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (156.0ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:06:10 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.6ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.7ms)
+  Rendered todos/index.html.erb within layouts/application (8.0ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 47ms (Views: 46.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:06:10 -0700
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:06:10 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:06:10 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:06:10 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:06:10 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:06:10 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:06:10 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:06:10 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:06:10 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (100.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (60.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (137.5ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:06:18 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (3.1ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.7ms)
+  Rendered todos/index.html.erb within layouts/application (8.6ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 49ms (Views: 48.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:06:18 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:06:18 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:06:18 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:06:18 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:06:18 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:06:18 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:06:18 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:06:18 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:06:18 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (100.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (64.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (140.2ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:06:32 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (3.0ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.8ms)
+  Rendered todos/index.html.erb within layouts/application (8.9ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 49ms (Views: 48.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:06:32 -0700
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:06:32 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:06:32 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:06:32 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:06:32 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:06:32 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:06:32 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:06:32 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:06:32 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (98.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (63.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (141.1ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:06:52 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (1.7ms)
+  Rendered todos/index.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+SyntaxError - syntax error, unexpected ',', expecting :: or '[' or '.'
+...etime_field, "Completion Date", class: "col-sm-6 control-lab...
+...                               ^:
+  app/views/todos/_form.html.erb:10:in `'
+  actionview (4.2.2) lib/action_view/template.rb:296:in `compile'
+  actionview (4.2.2) lib/action_view/template.rb:245:in `block (2 levels) in compile!'
+  activesupport (4.2.2) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.2) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.2) lib/action_view/template.rb:244:in `block in compile!'
+  actionview (4.2.2) lib/action_view/template.rb:232:in `compile!'
+  actionview (4.2.2) lib/action_view/template.rb:144:in `block in render'
+  activesupport (4.2.2) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.2) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.2) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.2) lib/action_view/renderer/partial_renderer.rb:339:in `render_partial'
+  actionview (4.2.2) lib/action_view/renderer/partial_renderer.rb:310:in `block in render'
+  actionview (4.2.2) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.2) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.2) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.2) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.2) lib/action_view/renderer/partial_renderer.rb:309:in `render'
+  actionview (4.2.2) lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (4.2.2) lib/action_view/renderer/renderer.rb:21:in `render'
+  actionview (4.2.2) lib/action_view/helpers/rendering_helper.rb:32:in `render'
+  app/views/todos/index.html.erb:2:in `_app_views_todos_index_html_erb___1070955821894113956_70223534832520'
+  actionview (4.2.2) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.2) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.2) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.2) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.2) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.2) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.2) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.2) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.2) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.2) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.2) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.2) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.2) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.2) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.2) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.2) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.2) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.2) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.2) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.2) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.2) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.2) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.2) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.2) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.2) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.2) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.2) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.2) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.2) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.2) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.2) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.2) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.2) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.2) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.2) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.2) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.2) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.2) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.2) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.2) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.2) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.2) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.2) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.2) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.2) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.2) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.2) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.2) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/f6dd7252ea1be977/variables" for ::1 at 2015-07-18 18:06:52 -0700
+
+
+Started POST "/__better_errors/f6dd7252ea1be977/variables" for ::1 at 2015-07-18 18:06:53 -0700
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:07:02 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (3.4ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.8ms)
+  Rendered todos/index.html.erb within layouts/application (9.6ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 51ms (Views: 50.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:07:03 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:07:03 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:07:03 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:07:03 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:07:03 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:07:03 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:07:03 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:07:03 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:07:03 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (94.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (61.1ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (139.0ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:07:25 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.8ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.6ms)
+  Rendered todos/index.html.erb within layouts/application (8.1ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 50ms (Views: 49.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:07:25 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:07:25 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:07:25 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:07:25 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:07:25 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:07:25 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:07:25 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:07:25 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:07:25 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (103.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (66.1ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (147.1ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:07:46 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.2ms)
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.8ms)
+  Rendered todos/index.html.erb within layouts/application (9.5ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 54ms (Views: 53.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:07:46 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:07:46 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:07:46 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:07:46 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:07:46 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:07:46 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:07:46 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:07:46 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:07:46 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (109.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (71.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (148.8ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:07:56 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.6ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (0.7ms)
+  Rendered todos/index.html.erb within layouts/application (8.3ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 59ms (Views: 58.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:07:56 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:07:56 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:07:56 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:07:56 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:07:56 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:07:56 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:07:56 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:07:56 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:07:56 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (98.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (67.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (144.4ms)
+
+
+Started POST "/todos" for ::1 at 2015-07-18 18:08:34 -0700
+Processing by TodosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wJzuiu8mXJx8clhvM0yKvo3ni3i8maZdiMyJaRPFrKg+l4H7S9UBdWdsjxyDemehbMVqIny8TLSksoph5tALyQ==", "todo"=>{"text"=>"Eat sushi at 9pm", "completion_date"=>"07/19/15"}, "commit"=>"Submit"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "todos" ("text", "created_at", "updated_at") VALUES (?, ?, ?)  [["text", "Eat sushi at 9pm"], ["created_at", "2015-07-19 01:08:34.666921"], ["updated_at", "2015-07-19 01:08:34.666921"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 9ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:08:34 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.2ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (1.1ms)
+  Rendered todos/index.html.erb within layouts/application (8.7ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 57ms (Views: 56.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:08:34 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (102.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (68.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (148.9ms)
+
+
+Started DELETE "/todos/11" for ::1 at 2015-07-18 18:08:43 -0700
+Processing by TodosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"E8chIuRi2uC+IItgqgIS55c7ZOrJAyR+KOkNb75U0qftzE5TQJGHCaU+XBMaNP/4dhmFsAkmzpcElw5nS0F1xg==", "id"=>"11"}
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 11]]
+  [1m[35m (2.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 6ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:08:43 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (1.6ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (0.7ms)
+  Rendered todos/index.html.erb within layouts/application (7.5ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 49ms (Views: 48.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:08:43 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (102.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (73.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (169.5ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:10:25 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (3.0ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (1.2ms)
+  Rendered todos/index.html.erb within layouts/application (9.1ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 70ms (Views: 69.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:10:25 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:10:25 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:10:25 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:10:25 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:10:25 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:10:25 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:10:25 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:10:25 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:10:25 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (100.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (64.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (142.2ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:13:53 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (1.8ms)
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (1.1ms)
+  Rendered todos/index.html.erb within layouts/application (9.1ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 65ms (Views: 64.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:13:53 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:13:53 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:13:53 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:13:53 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:13:53 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:13:53 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:13:53 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:13:53 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:13:53 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (111.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (65.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (145.2ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:14:02 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (1.9ms)
+  [1m[35mTodo Load (0.3ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (1.0ms)
+  Rendered todos/index.html.erb within layouts/application (9.0ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 52ms (Views: 52.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:14:02 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:14:02 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:14:02 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:14:02 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:14:02 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:14:02 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:14:02 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:14:02 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:14:02 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (102.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (70.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (160.2ms)
+
+
+Started POST "/todos" for ::1 at 2015-07-18 18:14:14 -0700
+Processing by TodosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Tf9Qi5dqW6LrDmW4GLotCDm8vwdu6b/oXsCB5pQhng6z9D/6M5kGS/AQssuojMAX2J5eXa7MVQFyvoLuYTQ5bw==", "todo"=>{"text"=>"Eat sushi at 9pm", "completion_date"=>"2015/07/18"}, "commit"=>"Submit"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "todos" ("text", "completion_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["text", "Eat sushi at 9pm"], ["completion_date", "2015-07-18 00:00:00.000000"], ["created_at", "2015-07-19 01:14:14.141801"], ["updated_at", "2015-07-19 01:14:14.141801"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/todos
+Completed 302 Found in 8ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:14:14 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (1.7ms)
+  [1m[35mTodo Load (0.3ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (1.2ms)
+  Rendered todos/index.html.erb within layouts/application (8.0ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 48ms (Views: 46.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:14:14 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (101.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (62.2ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (142.0ms)
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:14:14 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (96.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (61.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (142.5ms)
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:14:19 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.5ms)
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/_todo.html.erb (1.1ms)
+  Rendered todos/index.html.erb within layouts/application (8.3ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 54ms (Views: 53.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:14:19 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:14:19 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:14:19 -0700
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:14:19 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:14:19 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:14:19 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (101.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (63.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (141.3ms)
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:14:19 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:14:19 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:14:19 -0700
+
+
+Started GET "/todos" for ::1 at 2015-07-18 18:39:54 -0700
+Processing by TodosController#index as HTML
+  Rendered todos/_form.html.erb (2.2ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/_todo.html.erb (1.3ms)
+  Rendered todos/index.html.erb within layouts/application (9.4ms)
+  Rendered shared/_flash_messages.html.erb (0.1ms)
+Completed 200 OK in 77ms (Views: 76.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/texts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-07-18 18:39:54 -0700
+
+
+Started GET "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js" for ::1 at 2015-07-18 18:39:54 -0700
+
+ActionController::RoutingError (No route matches [GET] "/Users/apdev/Documents/Coding/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"):
+  actionpack (4.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.2) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.2) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.2) lib/rails/engine.rb:518:in `call'
+  railties (4.2.2) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apdev/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (104.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (79.7ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apdev/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (173.9ms)
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-07-18 18:39:54 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-07-18 18:39:54 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-07-18 18:39:54 -0700
+
+
+Started GET "/assets/todos.self-afb7f205f81fc4993089b9f0df467336fff278d61b132c6e01c40cbe2379709a.css?body=1" for ::1 at 2015-07-18 18:39:54 -0700
+
+
+Started GET "/assets/texts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:39:54 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-07-18 18:39:54 -0700
+
+
+Started GET "/assets/todos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-07-18 18:39:54 -0700
+>>>>>>> 7ab97e789afd2e0daf1c22cf05a4af42c46908f7
